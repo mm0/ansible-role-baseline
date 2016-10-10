@@ -11,7 +11,7 @@
 
   - name: Install common packages
     action: apt pkg={{item}} state=installed
-    with_items: "{{ baseline_packages | combine(extra_packages) }}"
+    with_items: "{{ baseline_packages + extra_packages }}"
     become: yes
     tags: installs
 
