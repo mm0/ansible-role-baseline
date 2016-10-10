@@ -1,15 +1,18 @@
 ---
   - name: update packages
     apt: update_cache=yes
+    become: yes
     tags: update_pkgs
 
   - name: upgrade server
     apt: upgrade=full
+    become: yes
     tags: update_pkgs
 
   - name: Install common packages
     action: apt pkg={{item}} state=installed
     with_items: "{{ baseline_packages | combine(extra_packages) }}"
+    become: yes
     tags: installs
 
   - name: Install passlib 
@@ -17,25 +20,32 @@
 
   - name: Copy MOTD to remote host(s) 
     copy: src=motd.tail dest=/etc/motd.tail 
+    become: yes
     tags: motd
 
   - name: Copy MOTD to Ubuntu 14.04 remote host(s) 
     copy: src=89-motd dest=/etc/update-motd.d/89-motd owner=root group=root mode=751
     when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "14.04"
+    become: yes
     tags: motd
 
   - name: Set default editor to vim
     lineinfile: line="EDITOR=vim" dest=/etc/environment state=present
+    become: yes
 
   - name: Set Timezone
     file: dest=/etc/localtime state=link src="/usr/share/zoneinfo/{{timezone}}" owner=root group=root mode=644 force=true
+    become: yes
 
   - name: Set Hostname file
     lineinfile: dest=/etc/hostname regexp='.*' line="{{ server_hostname }}"
+    become: yes
 
   - name: Set Hostname Live
     shell: hostname "{{ server_hostname }}"
+    become: yes
 
   - name: Ensure entry exists
     lineinfile: dest=/etc/hosts line="127.0.0.1 {{ server_hostname }}"
+    become: yes
 
