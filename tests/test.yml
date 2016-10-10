@@ -1,0 +1,9 @@
+- hosts: all
+  vars:
+  - server_hostname: localhost
+  - timezone: America/Los_Angeles
+  - extra_packages:
+    - vim
+    - lynx
+  roles:
+  - ansible-role-baseline

@@ -1,0 +1,18 @@
+monitoring_packages:
+  - atop
+  - apachetop
+  - mytop
+  - iftop
+  - jnettop
+  - iotop
+  - htop 
+baseline_packages:
+  - git 
+  - python-pip
+  - lynx
+  - ncdu
+  - vim
+  "{{ monitoring_packages }}"
+extra_packages: []
+timezone: America/Los_Angeles
+server_hostname: localhost

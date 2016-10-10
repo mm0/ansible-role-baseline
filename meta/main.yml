@@ -1,0 +1,26 @@
+---
+galaxy_info:
+  author: Matt Margolin
+  description: "
+An Ansible role that runs a few baseline tasks on a new server:
+
+- Apt update
+- Apt upgrade
+- Install various default packages
+- Install python passlib library
+- Configure MOTD for ubuntu 14.04
+- Sets default editor to vim
+- Sets timezone
+- Sets Hostname 
+- Sets 127.0.0.1 {{ server_hostname }} entry in /etc/hosts
+"
+  company: 
+  license: MIT
+  min_ansible_version: 2.0
+  platforms:
+  - name: All
+    versions:
+    - all
+  galaxy_tags:
+dependencies:
+
