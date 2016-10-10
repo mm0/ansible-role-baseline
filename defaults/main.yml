@@ -12,7 +12,6 @@ baseline_packages:
   - lynx
   - ncdu
   - vim
-  "{{ monitoring_packages }}"
 extra_packages: []
 timezone: America/Los_Angeles
 server_hostname: localhost
