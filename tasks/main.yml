@@ -38,11 +38,7 @@
     become: yes
 
   - name: Set Hostname file
-    lineinfile: dest=/etc/hostname regexp='.*' line="{{ server_hostname }}"
-    become: yes
-
-  - name: Set Hostname Live
-    shell: hostname "{{ server_hostname }}"
+    hostname: name="{{ server_hostname }}"
     become: yes
 
   - name: Ensure entry exists
