@@ -1,6 +1,8 @@
-# README.md
+Ansible Role: Baseline v1.0
+=====================
 
-# Ansible Role: Baseline v1.0
+[![Build Status](https://travis-ci.org/mm0/ansible-role-baseline.svg?branch=master)](https://travis-ci.org/mm0/ansible-role-baseline)
+
 
 An Ansible role that runs a few baseline tasks on a new server:
 
@@ -16,44 +18,48 @@ An Ansible role that runs a few baseline tasks on a new server:
 
 
 
-See Also: 
-
-![travis-ci](https://travis-ci.org/mm0/ansible-role-baseline.svg?branch=master)
-
-## Requirements
+Requirements
+---------------
 
 - Sudo access
 
 
-## Role Variables
+Role Variables
+---------------
 
 Available variables are listed below, there are no defaults:
 
-      - server_hostname: localhost
-      - timezone: America/Los_Angeles
-      - extra_packages:
-        - vim
-        - lynx
+```yml
+  - server_hostname: localhost
+  - timezone: America/Los_Angeles
+  - extra_packages:
+    - vim
+    - lynx
+```
 
-## Dependencies
+Dependencies
+---------------
 
 None 
 
-## Example Playbook
+Example Playbook
+---------------
 
-    - hosts: webservers
-      vars:
-      - server_hostname: localhost
-      - timezone: America/Los_Angeles
-      - extra_packages:
-        - vim
-        - lynx
-      roles:
-      - ansible-role-baseline
+```yml
+- hosts: webservers
+  vars:
+  - server_hostname: localhost
+  - timezone: America/Los_Angeles
+  - extra_packages:
+    - vim
+    - lynx
+  roles:
+  - ansible-role-baseline
+```
+License
+---------------
 
-## License
-
-MIT
+BSD-2
 
 
 Author Information
@@ -61,4 +67,4 @@ Author Information
 
 [Matt Margolin](mailto:matt.margolin@gmail.com)
 
-mm0 on github
+[mm0](https://github.com/mm0) on github

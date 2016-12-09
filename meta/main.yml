@@ -15,12 +15,13 @@ An Ansible role that runs a few baseline tasks on a new server:
 - Sets 127.0.0.1 {{ server_hostname }} entry in /etc/hosts
 "
   company: 
-  license: MIT
+  license: BSD2
   min_ansible_version: 2.0
   platforms:
-  - name: All
+  - name: Ubuntu
     versions:
     - all
   galaxy_tags:
+  - system
 dependencies:
 
