@@ -1,4 +1,12 @@
 ---
+  - name: 'install python2'
+    raw: sudo apt-get -y install python-simplejson
+    when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+
+  - name: 'install aptitude'
+    raw: sudo apt-get -y install aptitude
+    when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+
   - name: update packages
     apt: update_cache=yes
     become: yes
