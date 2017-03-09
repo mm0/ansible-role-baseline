@@ -1,14 +1,16 @@
 ---
   - name: 'install python2'
-    raw: sudo apt-get -y install python-simplejson
-    when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+    raw:  test -e /usr/bin/python || (apt -y update && apt install -y python-simplejson)
+    changed_when: False
+    become: yes
 
   - name: 'install aptitude'
     raw: sudo apt-get -y install aptitude
     when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+    become: yes
 
   - name: update packages
-    apt: update_cache=yes
+    apt: update_cache=yes upgrade=safe cache_valid_time=3600
     become: yes
     tags: update_pkgs
 
