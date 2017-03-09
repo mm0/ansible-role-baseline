@@ -15,3 +15,4 @@ baseline_packages:
 extra_packages: []
 timezone: America/Los_Angeles
 server_hostname: localhost
+motd_contents: "{{ lookup('file', '89-motd') }}"

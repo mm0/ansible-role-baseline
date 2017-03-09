@@ -32,8 +32,8 @@
     tags: motd
 
   - name: Copy MOTD to Ubuntu 14.04 remote host(s) 
-    copy: src=89-motd dest=/etc/update-motd.d/89-motd owner=root group=root mode=751
-    when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "14.04"
+    copy: content="{{ motd_contents }}" dest=/etc/update-motd.d/89-motd owner=root group=root mode=751
+    when: ansible_distribution == "Ubuntu"
     become: yes
     tags: motd
 
@@ -44,6 +44,9 @@
   - name: Set Timezone
     file: dest=/etc/localtime state=link src="/usr/share/zoneinfo/{{timezone}}" owner=root group=root mode=644 force=true
     become: yes
+
+  - timezone: name="{{timezone}}"
+    when: ansible_version.major >= 2 and ansible_version.minor >=2
 
   - name: Set Hostname file
     hostname: name="{{ server_hostname }}"
