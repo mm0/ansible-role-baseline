@@ -24,7 +24,7 @@ install:
 script:
   # Basic role syntax check
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-  - ansible-playbook tests/test.yml -i tests/inventory --check
+  - ansible-playbook tests/test.yml -i tests/inventory --check --connection=local
 
 
 notifications:
